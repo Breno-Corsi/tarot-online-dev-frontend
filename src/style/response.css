@@ -23,6 +23,7 @@ body {
 .response__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     animation: appearOpacity 3s ease-in-out forwards;
     overflow: auto;
 }
