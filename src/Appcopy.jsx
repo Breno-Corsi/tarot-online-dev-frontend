@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import tarotResponse from './mocks/tarotResponse.json';
 import { Alert, Fingerprint, Background, InitialContainer, Header, Form, Deck, Cards, Response, Loading } from './components';
 
 export default function App() {
@@ -38,32 +37,45 @@ export default function App() {
         setShowAlert(false);
     };
 
-    async function sendQuestionToBackend() {
-        const data = tarotResponse;
+    async function sendQuestionToBackend(userQuestion) {
+        const url = "/tarot-online?querentsQuestion=";
+        const encoded = url + encodeURIComponent(userQuestion);
 
-        if (!data.arcaneResponse || !data.sortedCardsInOrder) {
-            setAlertText(data.error || "Invalid mocks response");
-            setShowAlert(true);
-            return false;
-        }
+        const fingerprint = await Fingerprint();
+        return fetch(encoded, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Device-Id": fingerprint
+            }
+        })
+            .then(resp => resp.json())
+            .then(data => {
 
-        try {
-            setSortedCardsInOrder(data.sortedCardsInOrder);
-            setArcaneResponse(data.arcaneResponse.split("\n\n").map(p => p.trim()).filter(Boolean));
-        }
-        catch (err) {
-            setAlertText(String(err));
-            setShowAlert(true);
-            return false;
-        }
+                if (!data.arcaneResponse || !data.sortedCardsInOrder) {
+                    setAlertText(data.error);
+                    setShowAlert(true);
+                    return false;
+                }
 
-        if (data.arcaneResponse === "Sorry, I can only provide Tarot readings.") {
-            setAlertText(data.arcaneResponse);
-            setShowAlert(true);
-            return false;
-        }
+                try {
+                    setSortedCardsInOrder(data.sortedCardsInOrder);
+                    setArcaneResponse(data.arcaneResponse.split("\\n").map(p => p.trim()));
+                }
+                catch (err) {
+                    setAlertText(err);
+                    setShowAlert(true);
+                    return false;
+                }
 
-        return true;
+                if (data.arcaneResponse == "Sorry, I can only provide Tarot readings.") {
+                    setAlertText(data.arcaneResponse);
+                    setShowAlert(true);
+                    return false;
+                }
+
+                return true;
+            });
     }
 
     const handleSubmit = async (event) => {
@@ -76,7 +88,7 @@ export default function App() {
                 setShowAlert(true);
                 return;
             }
-
+            
             setIsRunning(true);
             setDeckAppears(false);
 
@@ -85,7 +97,7 @@ export default function App() {
                 setShowLoading(true);
             }, 1250);
 
-            const ok = await sendQuestionToBackend();
+            const ok = await sendQuestionToBackend(userInput.trim());
             if (!ok) {
                 setShowLoading(false);
                 setShowDeck(true);
@@ -120,12 +132,12 @@ export default function App() {
             <Background />
             <InitialContainer appears={containerAppears}>
                 <Header />
-                <Alert
+                <Alert 
                     appears={showAlert}
                     alertText={alertText}
                     onClose={handleAlertClose}
                 />
-                <Form
+                <Form 
                     onSubmit={handleSubmit}
                     userInput={userInput}
                     setUserInput={setUserInput}
@@ -140,7 +152,7 @@ export default function App() {
                     isReversedList={isReversedList}
                 />}
             </InitialContainer>
-            <Response
+            <Response 
                 appears={responseAppears}
                 cardsList={cleanCardsList}
                 cardsNameList={sortedCardsInOrder}
@@ -149,5 +161,6 @@ export default function App() {
                 question={userInput}
             />
         </>
-    );
+    )
+
 }
