@@ -1,0 +1,19 @@
+## docker-compose.yaml
+
+services:
+  backend:
+    image: tarot-online-app
+    container_name: tarot-backend
+    ports:
+      - "8080:8080"
+
+  tarot-frontend:
+    build: .
+    container_name: tarot-frontend
+    ports:
+      - "5173:4173"
+    environment:
+      - NODE_ENV=production
+    command: ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
+    depends_on:
+      - backend

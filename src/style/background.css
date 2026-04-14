@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.background__container {
+	z-index: -1;
+	background-image: radial-gradient(#400E3C, #400E3C, #180517, black);
+	background-position: center;
+	background-size: cover;
+	height: 100%;
+	isolation: isolate;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.background__container-smoke {
+	z-index: -1;
+	height: 100%;
+	left: 0;
+	mix-blend-mode: screen;
+	object-fit: cover;
+	opacity: 0.65;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

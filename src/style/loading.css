@@ -1,0 +1,142 @@
+.loading__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px; /* ↓ */
+}
+
+.loading__image {
+    width: 175px; /* ↓ */
+    height: auto;
+    animation: pulse-loading-icon 1.25s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-loading-icon {
+    0% {
+        filter: drop-shadow(0 0 0.5px var(--c-text));
+    }
+    100% {
+        filter: drop-shadow(0 0 3.2px var(--c-text));
+    }
+}
+
+/* 1920+ */
+@media (min-width: 1920px) {
+    .loading__container {
+        margin-top: 78px;
+    }
+
+    .loading__image {
+        width: 190px;
+    }
+}
+
+/* 2560 */
+@media (min-width: 2560px) {
+    .loading__container {
+        margin-top: 95px;
+    }
+
+    .loading__image {
+        width: 225px;
+    }
+}
+
+/* 3840 */
+@media (min-width: 3840px) {
+    .loading__container {
+        margin-top: 120px;
+    }
+
+    .loading__image {
+        width: 280px;
+    }
+}
+
+/* 1366 */
+@media (max-width: 1366px) {
+    .loading__container {
+        margin-top: 60px;
+    }
+
+    .loading__image {
+        width: 155px;
+    }
+}
+
+/* 1024 */
+@media (max-width: 1024px) {
+    .loading__container {
+        margin-top: 52px;
+    }
+
+    .loading__image {
+        width: 140px;
+    }
+}
+
+/* 768 */
+@media (max-width: 768px) {
+    .loading__container {
+        margin-top: 44px;
+    }
+
+    .loading__image {
+        width: 120px;
+    }
+}
+
+/* 430 */
+@media (max-width: 430px) {
+    .loading__container {
+        margin-top: 35px;
+    }
+
+    .loading__image {
+        width: 105px;
+    }
+}
+
+/* 412 */
+@media (max-width: 412px) {
+    .loading__container {
+        margin-top: 30px;
+    }
+
+    .loading__image {
+        width: 96px;
+    }
+}
+
+/* 390 */
+@media (max-width: 390px) {
+    .loading__container {
+        margin-top: 26px;
+    }
+
+    .loading__image {
+        width: 88px;
+    }
+}
+
+/* 360 */
+@media (max-width: 360px) {
+    .loading__container {
+        margin-top: 22px;
+    }
+
+    .loading__image {
+        width: 80px;
+    }
+}
+
+/* 320 */
+@media (max-width: 320px) {
+    .loading__container {
+        margin-top: 18px;
+    }
+
+    .loading__image {
+        width: 70px;
+    }
+}

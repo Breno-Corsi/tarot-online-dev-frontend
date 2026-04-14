@@ -1,0 +1,160 @@
+:root {
+    --c-decoration: #CEC178;
+    --c-effect: #9c8607;
+    --c-shadow-1: #400E3C;
+    --c-shadow-2: #180517;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    font-family: "Cormorant Garamond";
+    position: relative;
+}
+
+.header__container {
+    align-items: center;
+    display: flex;
+    justify-self: center;
+    margin-bottom: 1.7vh; /* ↓ */
+    margin-top: 1.7vh;   /* ↓ */
+}
+
+.header__title {
+    color: var(--c-decoration);
+    font-size: 8.5rem; /* ↓ */
+    text-shadow: 0 2px 25px var(--c-effect);
+}
+
+.header__logo {
+    justify-self: center;
+    margin-left: 1.7vw; /* ↓ */
+    margin-right: 1.7vw; /* ↓ */
+    width: 13.5rem; /* ↓ */
+    filter: drop-shadow(0 2px 25px var(--c-effect));
+}
+
+/* 2560 */
+@media (max-width: 2560px) {
+    .header__title {
+        font-size: 5.8rem;
+    }
+
+    .header__logo {
+        width: 9.2rem;
+    }
+}
+
+/* 1920 */
+@media (max-width: 1920px) {
+    .header__title {
+        font-size: 4.3rem;
+    }
+
+    .header__logo {
+        width: 6.8rem;
+    }
+}
+
+/* 1440 */
+@media (max-width: 1440px) {
+    .header__title {
+        font-size: 3.2rem;
+    }
+
+    .header__logo {
+        width: 5.1rem;
+    }
+}
+
+/* 1366 */
+@media (max-width: 1366px) {
+    .header__title {
+        font-size: 2.9rem;
+    }
+
+    .header__logo {
+        width: 4.6rem;
+    }
+}
+
+/* 1024 */
+@media (max-width: 1024px) {
+    .header__title {
+        font-size: 2.4rem;
+    }
+
+    .header__logo {
+        width: 3.8rem;
+    }
+}
+
+/* 768 */
+@media (max-width: 768px) {
+    .header__title {
+        font-size: 1.75rem;
+    }
+
+    .header__logo {
+        width: 2.8rem;
+    }
+}
+
+/* 430 */
+@media (max-width: 430px) {
+    .header__title {
+        font-size: 1.45rem;
+    }
+
+    .header__logo {
+        width: 2.3rem;
+    }
+}
+
+/* 412 */
+@media (max-width: 412px) {
+    .header__title {
+        font-size: 1.38rem;
+    }
+
+    .header__logo {
+        width: 2.2rem;
+    }
+}
+
+/* 390 */
+@media (max-width: 390px) {
+    .header__title {
+        font-size: 1.32rem;
+    }
+
+    .header__logo {
+        width: 2.1rem;
+    }
+}
+
+/* 360 */
+@media (max-width: 360px) {
+    .header__title {
+        font-size: 1.22rem;
+    }
+
+    .header__logo {
+        width: 1.95rem;
+    }
+}
+
+/* 320 */
+@media (max-width: 320px) {
+    .header__title {
+        font-size: 1.1rem;
+    }
+
+    .header__logo {
+        width: 1.75rem;
+    }
+}

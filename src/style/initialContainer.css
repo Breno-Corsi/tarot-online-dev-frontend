@@ -1,0 +1,37 @@
+:root {
+	--c-background-text: #0C0433;
+	--c-text: #CEC178;
+	--c-effect: #9c8607;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+@keyframes vanish {
+    0% { opacity: 1; }
+    99% { opacity: 0; }
+	100% {
+		display: none;
+		opacity: 0;
+	}
+}
+
+.container.out {
+	display: block;
+	animation: vanish 1s ease-in-out forwards;
+}
